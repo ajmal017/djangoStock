@@ -1,0 +1,111 @@
+{% block content %}
+
+<html>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <body>
+        <div class="col-md-10 offset-md-5 my-5">
+            <div class="card">
+                <div class="card-body">
+                </div>
+                <div class="card-body">
+        <canvas id="myChart" width="5" height="1"></canvas>
+    </div>
+        
+    </body>
+
+
+    <script>
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+        
+            // The data for our dataset
+            data: {
+                labels: {{varA|safe}},
+                datasets: [{
+                    label: 'Revenue',
+                    backgroundColor: 'rgb(168, 247, 0)',
+                    borderColor: 'rgb(168, 247, 0)',
+                    data: {{varB|safe}}, 
+                },{
+                    label: 'Net Income',
+                    backgroundColor: 'rgb(200, 1000, 1000)',
+                    borderColor: 'rgb(200, 1000, 1000)',
+                    data: {{varC|safe}},
+                }]
+                    
+                    
+                
+            },
+        
+            // Configuration options go here
+            options: {}
+        });
+
+    </script>
+
+    <h1>Key Metrics</h1>
+    <p>Beta: {{Beta|safe}}
+        <br>P/E: {{PE_string|safe}}
+        <br>EPS Last 4 Qtrs: {{EPS_LIST|safe}}
+    
+    </p>
+    <a href="#">This is a hyperlink</a>
+</html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<body>
+    <div class="col-md-10 offset-md-5 my-5">
+        <div class="card">
+            <div class="card-body">
+            </div>
+            <div class="card-body">
+    <canvas id="Chart" width="5" height="1"></canvas>
+</div>
+    
+</body>
+
+
+<script>
+
+    var ctx = document.getElementById('Chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: {{namesDCF_X|safe}},
+            datasets: [{
+                label: 'DCF',
+                
+                borderColor: 'rgb(12, 255, 44)',
+                
+                data: {{varDCF|safe}}, 
+            },{
+                label: 'Stock Price',
+                
+                borderColor: 'rgb(12, 2, 255)',
+                
+                data: {{varPrice|safe}},
+            }]
+                
+                
+            
+        },
+    
+        // Configuration options go here
+        options: {}
+    });
+
+</script>
+
+
+{% endblock %}

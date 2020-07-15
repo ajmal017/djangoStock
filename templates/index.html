@@ -1,0 +1,63 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consulting</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>     
+    <div class="container">
+      <div id="particles-js"></div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+          <script type="text/javascript">
+            particlesJS.load('particles-js', '{{open_json}}', function() {
+              console.log('particles.json loaded');
+            });
+          </script> 
+        <nav class="navbar">
+            <img src="https://i.imgur.com/PQnON6g.png">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Service</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <section id="home">
+            <h1 class="frontpageTitle">Straton Oakmont</h1>
+                <div class="searchbar">
+                  <form action="betaCalc" autocomplete="off">
+                    <input type="text" placeholder="ENTER A STOCK TICKER: eg TSLA, AMZN" required="required" name="betaTicker">
+                  </form>										
+                </div>    
+            <div class='dailyTicker'>
+							Major indices:
+              <b>DJI:</b> {{dji_price|safe}}:
+              {{dji_percentage|safe}}%
+              <b>S&P500:</b> {{sp500_price|safe}}: 
+              {{sp500_percentage|safe}}%
+              <b>Nasdaq:</b> {{nasdaq_price|safe}}:
+              {{nasdaq_percentage|safe}}%             
+            </div>
+        </section>
+        <section id="about">
+            <h1>About</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam corrupti odio sed! Aliquam, iusto aliquid!</p>
+        </section>
+        <section id="service">
+            <h1>Service</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam corrupti odio sed! Aliquam, iusto aliquid!</p>
+        </section>
+        <section id="contact">
+            <h1>Contact</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam corrupti odio sed! Aliquam, iusto aliquid!</p>
+        </section>
+    </div>
+</body>
+</html>
+{% endblock %}
